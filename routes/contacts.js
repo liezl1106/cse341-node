@@ -6,5 +6,5 @@ const router = express.Router();
 
 // GET /feed/posts
 router.get('/', contactsController.getData);
-// localhost:8080/contacts/
+// localhost:3000/contacts/
 module.exports = router;

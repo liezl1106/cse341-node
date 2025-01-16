@@ -1,2 +1,42 @@
+//LOCALHOST
+###Get all contacts
 GET http://localhost:3000/contacts
-# the request above returns a json object with all professional data for Nathan Birch. No database is connected.
+
+###Get contacts by ID
+GET http://localhost:3000/contacts
+
+###CREATE contacts
+GET http://localhost:3000/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Liezl",
+    "lastName": "Lizardo",
+    "email": "liezl1106@gmail.com",
+    "favoriteColor": "green",
+    "birthday": "11/06/1976"
+}
+
+###PUT contacts
+GET http://localhost:3000/6786b0d53aa79e85e5f9a551 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Liezl",
+    "lastName": "Lizardo",
+    "email": "liezl1106@gmail.com",
+    "favoriteColor": "green",
+    "birthday": "11/06/1976"
+}
+
+###DELETE contacts
+GET http://localhost:3000/6786b0d53aa79e85e5f9a551 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Liezl",
+    "lastName": "Lizardo",
+    "email": "liezl1106@gmail.com",
+    "favoriteColor": "green",
+    "birthday": "11/06/1976"
+}

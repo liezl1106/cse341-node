@@ -15,7 +15,7 @@ app
     next();
   })
   .use('/contacts', contactsRoutes);
-  //.use('/contacts', professionalRoutes);
+  //.use('/contacts', professionalRoutes); this is wk1 
 
 mongodb.initDb((err, mongodb) => {
   if (err) {

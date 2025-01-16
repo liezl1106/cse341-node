@@ -3,7 +3,7 @@
 GET http://localhost:3000/contacts
 
 ###Get contacts by ID
-GET http://localhost:3000/contacts
+GET http://localhost:3000/contacts/6786b0d53aa79e85e5f9a551
 
 ###CREATE contacts
 GET http://localhost:3000/contacts HTTP/1.1

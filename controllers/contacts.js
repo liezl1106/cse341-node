@@ -28,8 +28,60 @@ const getSingle = async (req, res, next) => {
   });
 };
 
+const createContacts = async (req, res, next) => {
+  const contactsId = new ObjectId(req.params.id);
+  const contacts = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    birthday: req.body.birthday
+  };
+  const response = await mongodb.getDb().db().collection('contacts').insertOne(contacts);
+  if (response.modifiedCount > 0) {
+    res.status(200).json(send);
+  } else {
+    res.status(404).json(response.error || 'Some error occured while uploading the contacts.');
+  }
+};
+
+const updateContacts = async (req, res, next) => {
+  const contactsId = new ObjectId(req.params.id);
+  const contacts = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    birthday: req.body.birthday
+  };
+  const response = await mongodb.getDb().db().collection('contacts').replaceOne({_id: contactsId}, contacts);
+  if (response.modifiedCount > 0) {
+    res.status(200).json(send);
+  } else {
+    res.status(404).json(response.error || 'Some error occured while uploading the contacts.');
+  }
+};
+
+const deleteContacts = async (req, res, next) => {
+  const contactsId = new ObjectId(req.params.id);
+  const contacts = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    birthday: req.body.birthday
+  };
+  const response = await mongodb.getDb().db().collection('contacts').remove({_id: contactsId}, contacts);
+  if (response.modifiedCount > 0) {
+    res.status(200).json(send);
+  } else {
+    res.status(404).json(response.error || 'Some error occured while uploading the contacts.');
+  }
+};
+
+
 module.exports = { 
   //getData,
   getAll,
-  getSingle 
+  getSingle,
+  createContacts,
+  updateContacts,
+  deleteContacts
 };

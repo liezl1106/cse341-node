@@ -67,7 +67,7 @@ const deleteContacts = async (req, res, next) => {
     email: req.body.email,
     birthday: req.body.birthday
   };
-  const response = await mongodb.getDb().db().collection('contacts').remove({_id: contactsId}, contacts);
+  const response = await mongodb.getDb().db().collection('contacts').deleteOne({_id: contactsId});
   if (response.deleteCount > 0) {
     res.status(200).json(send);
   } else {

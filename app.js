@@ -4,9 +4,10 @@ const MongoClient = require('mongodb').MongoClient;
 const mongodb = require('./db/connect');
 const contactsRoutes = require('./routes/contacts');
 //const professionalRoutes = require('./routes/professinal');
+const app = express();
 
 const port = process.env.PORT || 3000;
-const app = express();
+
 
 app
   .use(bodyParser.json())

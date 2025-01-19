@@ -8,7 +8,6 @@
   "host": "https://project1-hacz.onrender.com/",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {

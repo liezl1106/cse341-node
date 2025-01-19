@@ -10,32 +10,25 @@ POST http://localhost:3000/contacts
 Content-Type: application/json
 
 {
-    "firstName": "Liezl",
-    "lastName": "Lizardo",
-    "email": "liezl1106@gmail.com",
+    "firstName": "Larnel",
+    "lastName": "Boron",
+    "email": "larnel0418@gmail.com",
     "favoriteColor": "green",
-    "birthday": "11/06/1976"
+    "birthday": "04/17/1972"
 }
 
-###UPDATE contacts
-PUT http://localhost:3000/contacts/6786b0d53aa79e85e5f9a552
+###PUT contacts
+PUT http://localhost:3000/contacts/678cad91ab160cbc15c5a3bb
+Content-Type: application/json
 
 {
     "firstName": "Larnel",
     "lastName": "Boron",
-    "email": "larnel@gmail.com",
-    "favoriteColor": "yellow",
+    "email": "larnelb0418@gmail.com",
+    "favoriteColor": "green",
     "birthday": "04/17/1972"
 }
 
 ###DELETE contacts
-DELETE http://localhost:3000/contacts/6786b0d53aa79e85e5f9a552
+DELETE http://localhost:3000/contacts/678ca8d7679a652d63b92123
 Content-Type: application/json
-
-{
-    "firstName": null,
-    "lastName": null,
-    "email": null,
-    "favoriteColor": null,
-    "birthday": null
-}

@@ -46,30 +46,21 @@ const createContacts = async (req, res, next) => {
   }
 };
 
-const updateContacts = async (req, res) => {
+const updateContacts = async (req, res, next) => {
   //#swagger.tags=['Contacts']
-  try {
-    const contactsId = new ObjectId(req.params.id); // Get the contact ID
-    const contacts = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      favoriteColor: req.body.favoriteColor,
-      birthday: req.body.birthday,
-    };
-
-    const response = await mongodb.getDb().collection('contacts').replaceOne(
-      { _id: contactsId }, // Find the contact by ID
-      contacts // Replace with the new data
-    );
-
-    if (response.modifiedCount > 0) {
-      res.status(200).json({ message: 'Contact updated successfully', response });
-    } else {
-      res.status(404).json({ message: 'No contact found with the provided ID', response });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message || 'An error occurred while updating the contact.' });
+  const contactsId = new ObjectId(req.params.id);
+  const contacts = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  };
+  const response = await mongodb.getDb().collection('contacts').replaceOne({ _id: contactsId }, contacts);
+  if (response.modifiedCount > 0) {
+    res.status(204).send();
+  } else {
+    res.status(500).json(response.error || 'Some error occurred while updating the contact.');
   }
 };
 

@@ -1,8 +1,22 @@
-const Validator = require('validatorjs');
-const validator = (body, rules, customMessages, callback) => {
-  const validation = new Validator(body, rules, customMessages);
-  validation.passes(() => callback(null, true));
-  validation.fails(() => callback(validation.errors, false));
-};
+const { body, param } = require('express-validator');
 
-module.exports = validator;
+const validateContact = [
+  body('firstName').notEmpty().withMessage('First name is required'),
+  body('lastName').notEmpty().withMessage('Last name is required'),
+  body('email').isEmail().withMessage('Invalid email address'),
+  body('favoriteColor').optional().isString().withMessage('Favorite color must be a string'),
+  body('birthday')
+    .optional()
+    .isISO8601()
+    .toDate()
+    .withMessage('Birthday must be a valid date (YYYY-MM-DD)'),
+];
+
+const validateId = [
+  param('id').isMongoId().withMessage('Invalid contact ID'),
+];
+
+module.exports = {
+  validateContact,
+  validateId,
+};

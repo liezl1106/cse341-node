@@ -18,15 +18,15 @@ Content-Type: application/json
 }
 
 ###PUT contacts
-PUT http://localhost:3000/contacts/678cad91ab160cbc15c5a3bb
+PUT http://localhost:3000/contacts/678a83c7ae9450a78d7edaa0
 Content-Type: application/json
 
 {
-    "firstName": "Larnel",
-    "lastName": "Boron",
-    "email": "larnelb0418@gmail.com",
-    "favoriteColor": "green",
-    "birthday": "04/17/1972"
+    "firstName": "Louie",
+    "lastName": "Amante",
+    "email": "louiejee@gmail.com",
+    "favoriteColor": "blue",
+    "birthday": "1996-04-27"
 }
 
 ###DELETE contacts

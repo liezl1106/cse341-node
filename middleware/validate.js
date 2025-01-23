@@ -1,26 +1,11 @@
-const validator = require('../helpers/validate');
+const { validationResult } = require('express-validator');
 
-const saveContact = (req, res, next) => {
-  const validationRule = {
-    firstName: 'required|string',
-    lastName: 'required|string',
-    email: 'required|email',
-    favoriteColor: 'required|string',
-    birthday: 'string'
-  };
-  validator(req.body, validationRule, {}, (err, status) => {
-    if (!status) {
-      res.status(412).send({
-        success: false,
-        message: 'Validation failed',
-        data: err
-      });
-    } else {
-      next();
-    }
-  });
+const validate = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  next();
 };
 
-module.exports = {
-  saveContact
-};
+module.exports = validate;
